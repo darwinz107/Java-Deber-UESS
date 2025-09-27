@@ -7,9 +7,13 @@ package Controller;
 import Models.Extra;
 import Models.Pedidos;
 import Models.Platillos;
+import java.awt.Checkbox;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,15 +23,35 @@ public class PedidosController {
     
     int count = 0;
   public List<Pedidos> totalPedidos = new ArrayList<>();
+  
     
-    public void agregar(Platillos plat, Extra extra){
-        count++;
+    public void agregar(String plats,List<Platillos> platArr, List<JCheckBox> chxBoxes,List<Extra> arrExtra){
+        count++; 
         Pedidos pedidos = new Pedidos();
-        pedidos.getPlatillo().add(plat); 
+        platArr.forEach(e ->{
+        if(plats.equals(e.getPlatillo())){
+            pedidos.setPlatillo(e);  
+        }
+        });
+        
+       
+      
+       
         pedidos.setId(count);
        
-            pedidos.getExtra().add(extra);     
-        totalPedidos.add(pedidos);
+        chxBoxes.forEach(e ->{
+        if(e.isSelected()){
+            for (Extra extra : arrExtra) {
+                if(extra.getExtra().equals(e.getText())){
+                    pedidos.getExtra().add(extra);
+                }
+            }
+        }
+        });
         
+        totalPedidos.add(pedidos);
+        JOptionPane.showMessageDialog(null, "Pedido generado con exito!");
     }
+    
+    
 }

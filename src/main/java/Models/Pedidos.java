@@ -13,10 +13,21 @@ import java.util.List;
  * @author EFICAZ
  */
 public class Pedidos {
+
+  
     
     private int Id;
-    private List<Platillos> platillo = new ArrayList<>();
-    private List<Extra> extra = new ArrayList<>();
+    private Platillos platillo;
+   private List<Extra> extra = new ArrayList<>();
+   
+    public Platillos getPlatillo() {
+        return platillo;
+    }
+
+    public void setPlatillo(Platillos platillo) {
+        this.platillo = platillo;
+    }
+ 
 
     public int getId() {
         return Id;
@@ -26,13 +37,7 @@ public class Pedidos {
         this.Id = Id;
     }
 
-    public List<Platillos> getPlatillo() {
-        return platillo;
-    }
-
-    public void setPlatillo(List<Platillos> platillo) {
-        this.platillo = platillo;
-    }
+  
 
     public List<Extra> getExtra() {
         return extra;
@@ -42,10 +47,9 @@ public class Pedidos {
         this.extra = extra;
     }
 
-    @Override
+   @Override
     public String toString() {
         return "Pedidos{" + "Id=" + Id + ", platillo=" + platillo + ", extra=" + extra + '}';
     }
-    
     
 }
