@@ -19,6 +19,7 @@ public class Pedidos {
     private int Id;
     private Platillos platillo;
    private List<Extra> extra = new ArrayList<>();
+   private String estado;
    
     public Platillos getPlatillo() {
         return platillo;
@@ -46,6 +47,16 @@ public class Pedidos {
     public void setExtra(List<Extra> extra) {
         this.extra = extra;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
 
    @Override
     public String toString() {

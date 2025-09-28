@@ -140,48 +140,93 @@ public class main {
        
         //Mostrar pedidos
         
-        JFrame jfMostrar = new JFrame();
+      
+        
+        
+        btnMostrar.addActionListener(e->{
+              JFrame jfMostrar = new JFrame();
         jfMostrar.setSize(600,500);
         JPanel jpMostar = new JPanel();
         GridLayout glMostar = new GridLayout(0, 1);
         jpMostar.setSize(600, 500);
         jpMostar.setLayout(glMostar);
-        JLabel lblTitleMostrar = new JLabel();
+        JLabel lblTitleMostrar = new JLabel("Tabla de pedidos");
         lblTitleMostrar.setForeground(Color.BLACK);
         
         
-         PedidosController pController = new PedidosController();
-         String[] columns = {"Platillo","Costo","Extras","Costo total de extras","Total"};
+        
+         String[] columns = {"Id","Platillo","Costo","Extras","Costo total de extras","Total"};
          
          DefaultTableModel model = new DefaultTableModel(columns, 0);
-         pController.totalPedidos.forEach(e->{
+         pControll.totalPedidos.forEach(ee->{
          List<String> extrass = new ArrayList<>();
          int Total =0;
-             for (Extra ext : e.getExtra()) {
+             for (Extra ext : ee.getExtra()) {
                 extrass.add(ext.getExtra());
                 Total +=ext.getPrecio();
              }
-         model.addRow(new Object[]{e.getPlatillo().getPlatillo(),e.getPlatillo().getCosto(),String.join(", ", extrass),Total,e.getPlatillo().getCosto()+Total});
+         model.addRow(new Object[]{ee.getId(),ee.getPlatillo().getPlatillo(),ee.getPlatillo().getCosto(),String.join(", ", extrass),Total,ee.getPlatillo().getCosto()+Total,ee.getEstado()});
          });
-         
-         JScrollPane spane = new JScrollPane();
          JTable table = new JTable(model);
-         spane.add(table);
-         jpMostar.add(table);
-        
+         JScrollPane spane = new JScrollPane(table);
+  
         jpMostar.add(lblTitleMostrar);
+        jpMostar.add(spane);
         jfMostrar.add(jpMostar);
-        
-        
-        btnMostrar.addActionListener(e-> jfMostrar.setVisible(true));
+            
+            
+            jfMostrar.setVisible(true);} );
         
 
+        //ACTUALIZAR ESTADO
+        
+        JFrame jfActualizar = new JFrame();
+        jfActualizar.setSize(600, 400);
+        
+        JPanel jpActualizar = new JPanel();
+        GridLayout gdAct = new GridLayout(0, 1);
+        jpActualizar.setLayout(gdAct);
+        
+        JLabel lblTitleAct = new JLabel("PEDIDOS:");
+        lblTitleAct.setForeground(Color.BLACK);
+         jpActualizar.add(lblTitleAct);
+        
+        pControll.totalPedidos.forEach(a ->{
+           
+        JLabel lblId = new JLabel("Id: "+String.valueOf(a.getId()));
+        JLabel lblPlatillo = new JLabel("Platillo: "+a.getPlatillo().getPlatillo());
+        List<String> arrActExtras = new ArrayList<>();
+            for (Extra actExtra : a.getExtra()) {
+                arrActExtras.add(actExtra.getExtra());
+            }
+        JLabel lblActExtra = new JLabel("Extras: "+String.join(", ",arrActExtras));
+        JLabel lblEstado = new JLabel(a.getEstado());
+        JButton btnAct = new JButton("Actualizar estado");
+        btnAct.addActionListener(btns ->{
+         lblEstado.setText(pControll.actualizarEstado(a.getId(), a.getEstado()));
+        });
+        jpActualizar.add(lblId);
+        jpActualizar.add(lblPlatillo);
+        jpActualizar.add(lblActExtra);
+        jpActualizar.add(lblEstado);
+        jpActualizar.add(btnAct);
+        
+        });
+        
+       
+        
+        
+        jfActualizar.add(jpActualizar);
+        
+        JButton btnActualizar = new JButton("Actualizar");
+        btnActualizar.addActionListener(q -> jfActualizar.setVisible(true));
         //FRAME PRINCIPAL
           //  panel.add(label);
        // panel.add(cbx);
         panel.add(btn);
         panel.add(btnMenu);
         panel.add(btnMostrar);
+        panel.add(btnActualizar);
         frame.add(panel);
        
         frame.setVisible(true);

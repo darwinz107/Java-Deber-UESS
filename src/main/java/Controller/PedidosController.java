@@ -36,7 +36,7 @@ public class PedidosController {
         
        
       
-       
+       pedidos.setEstado("Pendiente");
         pedidos.setId(count);
        
         chxBoxes.forEach(e ->{
@@ -53,5 +53,23 @@ public class PedidosController {
         JOptionPane.showMessageDialog(null, "Pedido generado con exito!");
     }
     
+    public String actualizarEstado(int id,String estado){
+    
+        if(estado.equals("PENDIENTE")){
+        totalPedidos.forEach(i ->{
+        if(i.getId() == id){
+            i.setEstado("ENTREGADO");
+        };
+        });
+        return "ENTREGADO";
+        }else{
+         totalPedidos.forEach(i ->{
+        if(i.getId() == id){
+            i.setEstado("PENDIENTE");
+        };
+        });
+        return "PENDIENTE";
+        } 
+    }
     
 }
