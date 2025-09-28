@@ -28,9 +28,10 @@ import javax.swing.table.DefaultTableModel;
 public class main {
      public static void main(String[] args) {
          
+         
+         
          PedidosController pControll = new PedidosController();
-         
-         
+   
          Platillos platillo = new Platillos("Hamburguesa ",8.99);
         Platillos platillo2 = new Platillos("Pizza ", 10.25);
         Platillos platillo3 = new Platillos("Ensalada ", 4.10);
@@ -55,6 +56,8 @@ public class main {
         String[] platArr = {platillo.getPlatillo(),platillo2.getPlatillo(),platillo3.getPlatillo()};
         List<JCheckBox> checkBoxes = new ArrayList<>();
          
+        
+        //VENTANA PRINCIPAL
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900, 600);
@@ -63,13 +66,14 @@ public class main {
          JPanel panel = new JPanel();
          GridLayout gdlMain = new GridLayout(2,2);
          panel.setLayout(gdlMain);
-         
+          panel.setSize(300, 200);
+          
+          
+         //HACER PEDIDO 
          JPanel panel2 = new JPanel();
          GridLayout gdlPedido = new GridLayout(0, 1);
-         panel.setSize(300, 200);
          panel2.setSize(20,50);
-         panel2.setLayout(gdlPedido);
-        // panel2.setBackground(Color.pink);
+         panel2.setLayout(gdlPedido);   
          JLabel label = new JLabel("Escoja un platillo:");
          label.setForeground(Color.BLACK);
          
@@ -103,7 +107,7 @@ public class main {
          btn.addActionListener(e ->jfPedido.setVisible(true));
          
          
-         
+         //MOSTRAR MENU 
          JFrame jfMenu = new JFrame();
          jfMenu.setSize(600, 500);
          JPanel panelMenu = new JPanel();
@@ -114,6 +118,7 @@ public class main {
          lblTitle.setText("Platillos principales:");
          lblTitle.setForeground(Color.BLACK);
          panelMenu.add(lblTitle);
+         
          ArrayPlatillos.forEach(e->{
          JLabel lblPlatillos = new JLabel();
          lblPlatillos.setText("Comida: "+e.getPlatillo() + " - Costo: "+e.getCosto()+"$");
@@ -138,18 +143,16 @@ public class main {
          
          JButton btnMostrar = new JButton("Mostrar");
        
-        //Mostrar pedidos
-        
-      
-        
-        
-        btnMostrar.addActionListener(e->{
-              JFrame jfMostrar = new JFrame();
+         
+        //MOSTRAR PEDIDOS
+        JFrame jfMostrar = new JFrame();
         jfMostrar.setSize(600,500);
         JPanel jpMostar = new JPanel();
         GridLayout glMostar = new GridLayout(0, 1);
         jpMostar.setSize(600, 500);
         jpMostar.setLayout(glMostar);
+        btnMostrar.addActionListener(e->{
+       
         JLabel lblTitleMostrar = new JLabel("Tabla de pedidos");
         lblTitleMostrar.setForeground(Color.BLACK);
         
@@ -176,17 +179,20 @@ public class main {
             
             
             jfMostrar.setVisible(true);} );
+      
         
-
-        //ACTUALIZAR ESTADO
-        
-        JFrame jfActualizar = new JFrame();
+           //ACTUALIZAR ESTADO
+         JFrame jfActualizar = new JFrame();
         jfActualizar.setSize(600, 400);
-        
+           
         JPanel jpActualizar = new JPanel();
         GridLayout gdAct = new GridLayout(0, 1);
         jpActualizar.setLayout(gdAct);
-        
+     
+        JButton btnActualizar = new JButton("Actualizar");
+        btnActualizar.addActionListener(q -> {
+             
+  
         JLabel lblTitleAct = new JLabel("PEDIDOS:");
         lblTitleAct.setForeground(Color.BLACK);
          jpActualizar.add(lblTitleAct);
@@ -213,16 +219,11 @@ public class main {
         
         });
         
-       
-        
-        
         jfActualizar.add(jpActualizar);
+            jfActualizar.setVisible(true);});
         
-        JButton btnActualizar = new JButton("Actualizar");
-        btnActualizar.addActionListener(q -> jfActualizar.setVisible(true));
+         
         //FRAME PRINCIPAL
-          //  panel.add(label);
-       // panel.add(cbx);
         panel.add(btn);
         panel.add(btnMenu);
         panel.add(btnMostrar);
@@ -233,22 +234,4 @@ public class main {
         jfMenu.add(panelMenu);
         
     }
-
-  /*  public static void main(String[] args) {
-        
-        Platillos platillo = new Platillos("Hamburguesa ",8.99);
-        Platillos platillo2 = new Platillos("Pizza ", 10.25);
-        Platillos platillo3 = new Platillos("Ensalada ", 4.10);
-        
-        Extra extra = new Extra("Queso",1.50);
-        Extra extra2 = new Extra("Bacon",2.50);
-        
-        
-        PedidosController pController = new PedidosController();
-        pController.agregar(platillo, extra);
-        pController.agregar(platillo2, extra2);
-        
-        System.out.println(pController.totalPedidos);
-        
-    }*/
 }

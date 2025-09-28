@@ -36,7 +36,7 @@ public class PedidosController {
         
        
       
-       pedidos.setEstado("Pendiente");
+       pedidos.setEstado("PENDIENTE");
         pedidos.setId(count);
        
         chxBoxes.forEach(e ->{
