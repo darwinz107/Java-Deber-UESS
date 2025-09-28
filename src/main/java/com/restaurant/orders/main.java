@@ -30,27 +30,39 @@ public class main {
          PedidosController pControll = new PedidosController();
    
          Platillos platillo = new Platillos("Hamburguesa ",8.99);
-        Platillos platillo2 = new Platillos("Pizza ", 10.25);
-        Platillos platillo3 = new Platillos("Ensalada ", 4.10);
+        Platillos platillo2 = new Platillos("Pizza ", 12.99);
+        Platillos platillo3 = new Platillos("Ensalada ", 7.99);
+        Platillos platillo4 = new Platillos("Tacos", 6.75);
+        Platillos platillo5 = new Platillos("Sushi", 12.50);
+        Platillos platillo6 = new Platillos("Spaghetti", 9.30);
+        Platillos platillo7 = new Platillos("Pollo a la parrilla", 11.20);
         
         Extra extra = new Extra("Queso",1.50);
-        Extra extra2 = new Extra("Bacon",2.50);
-        
-        List<String> plat = new ArrayList<>();
-        plat.add(platillo.getPlatillo());
-        plat.add(platillo2.getPlatillo());
-        plat.add(platillo3.getPlatillo());
+        Extra extra2 = new Extra("Bacon",2.00);
+        Extra extra3 = new Extra("Guacamole", 2.00);
+        Extra extra4 = new Extra("Champiñones", 1.75);
+        Extra extra5 = new Extra("Salsa BBQ", 1.20);
+        Extra extra6 = new Extra("Huevo", 0.90);
+   
         
         List<Platillos> ArrayPlatillos = new ArrayList<>();
         ArrayPlatillos.add(platillo);
         ArrayPlatillos.add(platillo2);
         ArrayPlatillos.add(platillo3);
+        ArrayPlatillos.add(platillo4);
+        ArrayPlatillos.add(platillo5);
+        ArrayPlatillos.add(platillo6);
+        ArrayPlatillos.add(platillo7);
         
         List<Extra> ingExtras = new ArrayList<>();
         ingExtras.add(extra);
         ingExtras.add(extra2);
+        ingExtras.add(extra3);
+        ingExtras.add(extra4);
+        ingExtras.add(extra5);
+        ingExtras.add(extra6);
         
-        String[] platArr = {platillo.getPlatillo(),platillo2.getPlatillo(),platillo3.getPlatillo()};
+        String[] platArr = {platillo.getPlatillo(),platillo2.getPlatillo(),platillo3.getPlatillo(),platillo4.getPlatillo(),platillo5.getPlatillo(),platillo6.getPlatillo(),platillo7.getPlatillo()};
         List<JCheckBox> checkBoxes = new ArrayList<>();
          
         
@@ -224,7 +236,7 @@ public class main {
          jfActualizar.add(jpActualizar);
         
          
-        //FRAME PRINCIPAL
+        //EJECUCION DEL FRAME PRINCIPAL
         panel.add(btn);
         panel.add(btnMenu);
         panel.add(btnMostrar);
