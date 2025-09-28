@@ -1,4 +1,4 @@
-package Models;
+package com.restaurant.orders;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

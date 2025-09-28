@@ -1,6 +1,5 @@
-Models\Extra.class
-Models\Pedidos.class
-Controller\PedidosController.class
-Models\Platillos.class
+com\restaurant\orders\Pedidos.class
+com\restaurant\orders\Extra.class
+com\restaurant\orders\Platillos.class
 com\restaurant\orders\main.class
-View\ContenedorView.class
+com\restaurant\orders\PedidosController.class

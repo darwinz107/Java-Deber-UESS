@@ -4,9 +4,6 @@
 
 package com.restaurant.orders;
 
-import Controller.PedidosController;
-import Models.Extra;
-import Models.Platillos;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -152,7 +149,8 @@ public class main {
         jpMostar.setSize(600, 500);
         jpMostar.setLayout(glMostar);
         btnMostrar.addActionListener(e->{
-       
+        jpMostar.removeAll();
+        jpMostar.repaint();
         JLabel lblTitleMostrar = new JLabel("Tabla de pedidos");
         lblTitleMostrar.setForeground(Color.BLACK);
         
@@ -190,8 +188,10 @@ public class main {
         jpActualizar.setLayout(gdAct);
      
         JButton btnActualizar = new JButton("Actualizar");
+       
         btnActualizar.addActionListener(q -> {
-             
+         jpActualizar.removeAll();
+        jpActualizar.repaint();     
   
         JLabel lblTitleAct = new JLabel("PEDIDOS:");
         lblTitleAct.setForeground(Color.BLACK);
@@ -219,8 +219,9 @@ public class main {
         
         });
         
-        jfActualizar.add(jpActualizar);
+       
             jfActualizar.setVisible(true);});
+         jfActualizar.add(jpActualizar);
         
          
         //FRAME PRINCIPAL

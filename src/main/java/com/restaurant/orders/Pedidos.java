@@ -1,4 +1,4 @@
-package Models;
+package com.restaurant.orders;
 
 import java.util.ArrayList;
 import java.util.List;

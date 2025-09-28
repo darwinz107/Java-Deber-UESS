@@ -2,17 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package com.restaurant.orders;
 
-import Models.Extra;
-import Models.Pedidos;
-import Models.Platillos;
-import java.awt.Checkbox;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -66,7 +60,7 @@ public class PedidosController {
          totalPedidos.forEach(i ->{
         if(i.getId() == id){
             i.setEstado("PENDIENTE");
-        };
+        }
         });
         return "PENDIENTE";
         } 
